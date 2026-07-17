@@ -365,3 +365,168 @@ Data latih digunakan untuk membangun model, sedangkan data uji digunakan untuk m
 
 Setelah seluruh tahapan *Data Preparation* selesai dilakukan, dataset siap digunakan pada proses pembangunan model menggunakan algoritma Decision Tree dan Random Forest. Data yang dihasilkan telah memiliki target dalam bentuk klasifikasi biner, fitur yang relevan, serta format numerik yang sesuai dengan kebutuhan algoritma *Machine Learning*.
 
+# 6. Modeling
+
+Tahap *Modeling* merupakan proses membangun model klasifikasi menggunakan algoritma *Machine Learning*. Pada penelitian ini digunakan dua algoritma, yaitu **Decision Tree** dan **Random Forest**. Kedua algoritma dipilih untuk dibandingkan performanya dalam memprediksi status kelulusan mahasiswa berdasarkan data yang telah diproses pada tahap sebelumnya.
+
+---
+
+## 6.1 Pemilihan Algoritma
+
+Penelitian ini menggunakan dua algoritma klasifikasi yang memiliki karakteristik berbeda, yaitu **Decision Tree** dan **Random Forest**.
+
+### Decision Tree
+
+Decision Tree merupakan algoritma klasifikasi yang bekerja dengan membentuk struktur pohon keputusan berdasarkan atribut yang paling berpengaruh terhadap data. Setiap percabangan merepresentasikan aturan keputusan yang digunakan untuk menentukan kelas akhir suatu data.
+
+Kelebihan Decision Tree adalah mudah dipahami, mudah divisualisasikan, serta mampu menangani data numerik maupun kategorikal. Namun, algoritma ini memiliki kelemahan berupa kecenderungan mengalami *overfitting* apabila pohon yang dihasilkan terlalu kompleks.
+
+### Random Forest
+
+Random Forest merupakan metode *ensemble learning* yang dibangun dari sekumpulan Decision Tree. Setiap pohon dibentuk menggunakan sampel data dan kombinasi fitur yang berbeda, kemudian hasil prediksi ditentukan berdasarkan suara terbanyak (*majority voting*).
+
+Dibandingkan Decision Tree, Random Forest umumnya menghasilkan performa yang lebih baik karena mampu mengurangi risiko *overfitting* serta memiliki tingkat generalisasi yang lebih tinggi terhadap data baru.
+
+---
+
+## 6.2 Implementasi Model
+
+Model dibangun menggunakan pustaka **Scikit-learn** pada Python melalui Google Colab.
+
+Tahapan implementasi meliputi:
+
+1. Menentukan data latih dan data uji.
+2. Melatih model Decision Tree menggunakan data latih.
+3. Melatih model Random Forest menggunakan data latih.
+4. Menghasilkan prediksi pada data uji menggunakan kedua model.
+5. Membandingkan hasil prediksi menggunakan metrik evaluasi.
+
+Seluruh proses pelatihan dilakukan menggunakan dataset yang telah melalui tahap *Data Preparation* sehingga setiap model menerima data yang sama dan dapat dibandingkan secara adil.
+
+---
+
+## 6.3 Perbandingan Model
+
+Perbandingan model dilakukan berdasarkan hasil evaluasi pada data uji. Evaluasi menggunakan beberapa metrik, yaitu Accuracy, Precision, Recall, dan F1-Score.
+
+Selain itu, analisis juga dilakukan menggunakan Confusion Matrix untuk mengetahui kemampuan masing-masing model dalam mengklasifikasikan mahasiswa ke dalam kelas **Graduate** dan **Not Graduate**.
+
+Hasil evaluasi akan dibahas secara lebih rinci pada Bab 7.
+
+---
+
+## 6.4 Alasan Pemilihan Dua Algoritma
+
+Decision Tree dipilih karena memiliki proses klasifikasi yang sederhana dan mudah dipahami, sehingga hasil prediksi dapat dijelaskan melalui aturan keputusan yang terbentuk.
+
+Random Forest dipilih karena merupakan pengembangan dari Decision Tree yang mampu meningkatkan akurasi melalui pendekatan *ensemble learning*. Dengan membandingkan kedua algoritma tersebut, penelitian ini dapat mengetahui apakah penggunaan metode *ensemble* memberikan peningkatan performa dibandingkan penggunaan satu pohon keputusan.
+
+# 7. Evaluation
+
+Tahap evaluasi dilakukan untuk mengukur performa model yang telah dibangun dalam memprediksi status kelulusan mahasiswa. Pada penelitian ini, evaluasi dilakukan menggunakan beberapa metrik, yaitu **Accuracy**, **Precision**, **Recall**, **F1-Score**, serta **Confusion Matrix**. Selain itu, hasil evaluasi dari algoritma Decision Tree dan Random Forest dibandingkan untuk mengetahui model yang memiliki performa terbaik.
+
+---
+
+## 7.1 Evaluasi Decision Tree
+
+Hasil evaluasi model Decision Tree menunjukkan bahwa model mampu melakukan klasifikasi dengan tingkat akurasi yang cukup baik. Nilai evaluasi yang diperoleh ditunjukkan pada Tabel 7.1.
+
+### Tabel 7.1 Hasil Evaluasi Decision Tree
+
+| Metrik | Nilai |
+|---------|-------:|
+| Accuracy | 75,48% |
+| Precision | 76,04% |
+| Recall | 74,49% |
+| F1-Score | 75,26% |
+
+> **Masukkan gambar Confusion Matrix Decision Tree di bawah ini.**
+
+<p align="center">
+  <img src="images/confusion_matrix_dt.png" width="550">
+</p>
+
+<p align="center">
+<b>Gambar 7.1 Confusion Matrix Decision Tree</b>
+</p>
+
+Berdasarkan hasil evaluasi, algoritma Decision Tree memperoleh **Accuracy sebesar 75,48%**. Nilai Precision, Recall, dan F1-Score yang relatif seimbang menunjukkan bahwa model mampu mengklasifikasikan kedua kelas dengan cukup baik. Namun, masih terdapat sejumlah data yang salah diklasifikasikan sehingga performa model masih dapat ditingkatkan.
+
+---
+
+## 7.2 Evaluasi Random Forest
+
+Hasil evaluasi menggunakan algoritma Random Forest menunjukkan peningkatan performa dibandingkan Decision Tree. Nilai evaluasi ditunjukkan pada Tabel 7.2.
+
+### Tabel 7.2 Hasil Evaluasi Random Forest
+
+| Metrik | Nilai |
+|---------|-------:|
+| Accuracy | 83,84% |
+| Precision | 86,41% |
+| Recall | 80,36% |
+| F1-Score | 83,27% |
+
+> **Masukkan gambar Confusion Matrix Random Forest di bawah ini.**
+
+<p align="center">
+  <img src="images/confusion_matrix_rf.png" width="550">
+</p>
+
+<p align="center">
+<b>Gambar 7.2 Confusion Matrix Random Forest</b>
+</p>
+
+Hasil evaluasi menunjukkan bahwa algoritma Random Forest memperoleh **Accuracy sebesar 83,84%**, lebih tinggi dibandingkan Decision Tree. Nilai Precision yang tinggi menunjukkan bahwa model mampu memberikan prediksi positif dengan tingkat ketepatan yang baik, sedangkan nilai Recall menunjukkan bahwa sebagian besar data berhasil dikenali dengan benar. Nilai F1-Score sebesar **83,27%** menunjukkan keseimbangan yang baik antara Precision dan Recall.
+
+---
+
+## 7.3 Perbandingan Model
+
+Untuk mempermudah analisis, hasil evaluasi kedua algoritma dibandingkan pada tabel berikut.
+
+### Tabel 7.3 Perbandingan Performa Model
+
+| Metrik | Decision Tree | Random Forest |
+|---------|--------------:|--------------:|
+| Accuracy | 75,48% | **83,84%** |
+| Precision | 76,04% | **86,41%** |
+| Recall | 74,49% | **80,36%** |
+| F1-Score | 75,26% | **83,27%** |
+
+Berdasarkan hasil perbandingan tersebut, algoritma **Random Forest** menghasilkan performa yang lebih baik pada seluruh metrik evaluasi. Peningkatan akurasi sekitar **8,36%** dibandingkan Decision Tree menunjukkan bahwa pendekatan *ensemble learning* mampu meningkatkan kemampuan model dalam melakukan klasifikasi terhadap data mahasiswa.
+
+Dengan demikian, **Random Forest dipilih sebagai model terbaik** pada penelitian ini karena memberikan hasil prediksi yang lebih akurat dan lebih stabil dibandingkan Decision Tree.
+
+# 8. Kesimpulan dan Rekomendasi
+
+## 8.1 Kesimpulan
+
+Berdasarkan hasil penelitian yang telah dilakukan, dapat disimpulkan bahwa algoritma *Machine Learning* mampu digunakan untuk memprediksi status kelulusan mahasiswa menggunakan dataset **Predict Students Dropout and Academic Success**.
+
+Pada penelitian ini dilakukan perubahan target menjadi dua kelas, yaitu **Graduate** dan **Not Graduate**, serta menghapus atribut yang berkaitan dengan nilai Semester 1 dan Semester 2 agar model tidak bergantung pada hasil akademik selama perkuliahan.
+
+Dua algoritma yang digunakan, yaitu **Decision Tree** dan **Random Forest**, berhasil membangun model klasifikasi dengan performa yang berbeda. Berdasarkan hasil evaluasi, algoritma Random Forest memberikan performa terbaik dengan nilai **Accuracy sebesar 83,84%**, sedangkan Decision Tree memperoleh **Accuracy sebesar 75,48%**.
+
+Hasil tersebut menunjukkan bahwa pendekatan *ensemble learning* pada Random Forest mampu meningkatkan kemampuan model dalam memprediksi status kelulusan mahasiswa dibandingkan penggunaan satu pohon keputusan pada Decision Tree.
+
+---
+
+## 8.2 Keterbatasan Penelitian
+
+Penelitian ini masih memiliki beberapa keterbatasan, di antaranya:
+
+- Dataset yang digunakan berasal dari satu sumber sehingga hasil penelitian belum tentu dapat langsung diterapkan pada seluruh perguruan tinggi.
+- Penelitian hanya membandingkan dua algoritma klasifikasi, yaitu Decision Tree dan Random Forest.
+- Penelitian belum melakukan optimasi parameter (*hyperparameter tuning*) sehingga performa model masih dapat ditingkatkan.
+
+---
+
+## 8.3 Rekomendasi
+
+Untuk penelitian selanjutnya, beberapa hal yang dapat dilakukan antara lain:
+
+1. Menggunakan dataset yang lebih besar dan berasal dari beberapa perguruan tinggi.
+2. Membandingkan algoritma lain seperti XGBoost, LightGBM, atau Support Vector Machine (SVM).
+3. Melakukan *hyperparameter tuning* untuk memperoleh performa model yang lebih optimal.
+4. Mengembangkan model menjadi sistem prediksi berbasis web sehingga dapat dimanfaatkan oleh pihak perguruan tinggi sebagai pendukung pengambilan keputusan.
