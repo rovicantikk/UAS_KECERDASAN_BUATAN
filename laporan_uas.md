@@ -152,3 +152,216 @@ Pada proyek ini digunakan dua algoritma klasifikasi, yaitu **Decision Tree** dan
 Implementasi kedua algoritma tersebut diharapkan mampu menghasilkan model klasifikasi yang memiliki performa baik dalam membedakan mahasiswa yang diprediksi **Graduate** dan **Not Graduate**. Performa model kemudian dievaluasi menggunakan beberapa metrik, yaitu Accuracy, Precision, Recall, F1-Score, serta Confusion Matrix sehingga dapat diketahui algoritma yang memberikan hasil prediksi terbaik.
 
 Penerapan Artificial Intelligence dalam bidang pendidikan memberikan berbagai manfaat, di antaranya membantu institusi pendidikan dalam mengidentifikasi mahasiswa yang berisiko mengalami keterlambatan kelulusan, meningkatkan efektivitas proses pendampingan akademik, mendukung pengambilan keputusan berbasis data, serta mengoptimalkan pemanfaatan sumber daya yang dimiliki perguruan tinggi. Selain itu, penggunaan model prediksi juga dapat menjadi langkah awal dalam pengembangan sistem *Early Warning System* yang mampu memberikan peringatan dini terhadap mahasiswa yang membutuhkan perhatian khusus selama proses perkuliahan.
+
+# 3. Data Understanding
+
+## 3.1 Pengumpulan Data
+
+Dataset yang digunakan dalam proyek ini adalah **Predict Students Dropout and Academic Success** yang diperoleh dari platform Kaggle. Dataset ini dipilih karena menyediakan data mahasiswa yang mencakup aspek demografis, sosial, ekonomi, dan akademik sehingga sesuai untuk membangun model prediksi kelulusan mahasiswa menggunakan algoritma *Machine Learning*.
+
+Pada penelitian ini, dataset digunakan sebagai data utama untuk proses klasifikasi dengan target akhir berupa dua kelas, yaitu **Graduate** dan **Not Graduate**.
+
+---
+
+## 3.2 Sumber Dataset
+
+Dataset diperoleh dari platform Kaggle dengan nama **Predict Students Dropout and Academic Success**. Dataset ini telah banyak digunakan dalam penelitian di bidang *Educational Data Mining* karena memiliki jumlah data yang cukup serta atribut yang relevan untuk menganalisis faktor-faktor yang memengaruhi keberhasilan studi mahasiswa.
+
+Informasi umum dataset ditunjukkan pada Tabel 3.1.
+
+### Tabel 3.1 Informasi Dataset
+
+| Informasi | Keterangan |
+|------------|------------|
+| Nama Dataset | Predict Students Dropout and Academic Success |
+| Sumber | Kaggle |
+| Jumlah Data | 4.424 |
+| Jumlah Atribut | 37 atribut |
+| Target Awal | Graduate, Dropout, Enrolled |
+| Target Akhir | Graduate, Not Graduate |
+
+---
+
+## 3.3 Karakteristik Dataset
+
+Dataset terdiri atas 4.424 data mahasiswa dengan 37 atribut yang merepresentasikan karakteristik mahasiswa, mulai dari informasi pribadi, kondisi sosial ekonomi, hingga data akademik. Target pada dataset awal terdiri atas tiga kelas, yaitu **Graduate**, **Dropout**, dan **Enrolled**.
+
+Sesuai tujuan penelitian, target diubah menjadi dua kelas dengan menggabungkan kelas **Dropout** dan **Enrolled** menjadi **Not Graduate**. Perubahan ini dilakukan agar model berfokus pada proses klasifikasi biner sehingga hasil prediksi lebih mudah dianalisis.
+
+Selain itu, atribut yang berkaitan dengan nilai Semester 1 dan Semester 2 tidak digunakan dalam penelitian ini agar model tidak bergantung pada hasil akademik selama perkuliahan, melainkan pada karakteristik mahasiswa sebelum memperoleh hasil belajar tersebut.
+
+---
+
+## 3.4 Variabel yang Digunakan
+
+Penelitian ini menggunakan beberapa variabel yang dianggap relevan terhadap proses prediksi kelulusan mahasiswa. Seluruh atribut yang berkaitan dengan nilai Semester 1 dan Semester 2 dikeluarkan dari proses pemodelan.
+
+Tabel berikut menunjukkan beberapa variabel yang digunakan dalam penelitian.
+
+### Tabel 3.2 Variabel yang Digunakan
+
+| Variabel | Deskripsi |
+|-----------|-----------|
+| Marital status | Status pernikahan mahasiswa |
+| Application mode | Jalur masuk perguruan tinggi |
+| Application order | Urutan pilihan program studi |
+| Course | Program studi |
+| Previous qualification | Pendidikan terakhir |
+| Admission grade | Nilai saat masuk |
+| Nationality | Kewarganegaraan |
+| Mother's qualification | Pendidikan ibu |
+| Father's qualification | Pendidikan ayah |
+| Mother's occupation | Pekerjaan ibu |
+| Father's occupation | Pekerjaan ayah |
+| Displaced | Status mahasiswa perantau |
+| Educational special needs | Kebutuhan pendidikan khusus |
+| Debtor | Status tunggakan biaya pendidikan |
+| Tuition fees up to date | Status pembayaran biaya kuliah |
+| Gender | Jenis kelamin |
+| Scholarship holder | Status penerima beasiswa |
+| Age at enrollment | Usia saat masuk perguruan tinggi |
+| International | Status mahasiswa internasional |
+
+Berdasarkan hasil *Data Understanding*, dataset memiliki jumlah data yang memadai, kualitas data yang baik, serta variabel yang relevan untuk membangun model prediksi kelulusan mahasiswa menggunakan algoritma Decision Tree dan Random Forest.
+
+# 4. Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis (EDA) dilakukan untuk memahami karakteristik dataset sebelum proses pemodelan. Tahap ini bertujuan untuk mengidentifikasi pola data, melihat distribusi setiap variabel, mengetahui hubungan antar fitur, serta menemukan informasi penting yang dapat memengaruhi proses prediksi kelulusan mahasiswa.
+
+Pada penelitian ini, visualisasi data dibuat menggunakan bahasa pemrograman Python pada Google Colab dengan bantuan pustaka Matplotlib dan Seaborn.
+
+## 4.1 Distribusi Target
+
+Visualisasi distribusi target dilakukan untuk mengetahui proporsi jumlah data pada masing-masing kelas setelah proses transformasi target menjadi dua kelas, yaitu **Graduate** dan **Not Graduate**.
+
+> **Masukkan gambar hasil visualisasi distribusi target dari Google Colab di bawah ini.**
+
+<p align="center">
+  <img src="images/distribusi_target.png" width="600">
+</p>
+
+<p align="center">
+<b>Gambar 4.1 Distribusi Target</b>
+</p>
+
+Berdasarkan visualisasi tersebut, jumlah data pada kelas **Graduate** dan **Not Graduate** relatif seimbang. Kondisi ini menguntungkan dalam proses pelatihan model karena mengurangi risiko terjadinya *class imbalance* yang dapat menyebabkan model lebih cenderung memprediksi salah satu kelas dibandingkan kelas lainnya.
+
+## 4.2 Distribusi Usia Mahasiswa
+
+Visualisasi usia dilakukan untuk mengetahui sebaran usia mahasiswa pada saat melakukan pendaftaran di perguruan tinggi.
+
+> **Masukkan grafik distribusi usia dari Google Colab di bawah ini.**
+
+<p align="center">
+  <img src="images/distribusi_usia.png" width="600">
+</p>
+
+<p align="center">
+<b>Gambar 4.2 Distribusi Usia Mahasiswa</b>
+</p>
+
+Grafik menunjukkan bahwa sebagian besar mahasiswa berada pada rentang usia awal memasuki perguruan tinggi. Meskipun demikian, terdapat beberapa mahasiswa dengan usia yang lebih tinggi sehingga menunjukkan bahwa dataset memiliki variasi karakteristik usia yang cukup beragam.
+
+## 4.3 Status Penerima Beasiswa
+
+Visualisasi ini bertujuan untuk mengetahui proporsi mahasiswa yang menerima beasiswa dan yang tidak menerima beasiswa.
+
+> **Masukkan grafik Scholarship Holder dari Google Colab di bawah ini.**
+
+<p align="center">
+  <img src="images/scholarship.png" width="600">
+</p>
+
+<p align="center">
+<b>Gambar 4.3 Status Penerima Beasiswa</b>
+</p>
+
+Berdasarkan grafik tersebut, terlihat bahwa sebagian besar mahasiswa tidak menerima beasiswa. Variabel ini diperkirakan memiliki pengaruh terhadap status kelulusan karena berkaitan dengan kondisi ekonomi maupun prestasi akademik mahasiswa.
+
+## 4.4 Status Pembayaran Biaya Kuliah
+
+Visualisasi dilakukan untuk mengetahui distribusi mahasiswa berdasarkan status pembayaran biaya kuliah (*Tuition Fees Up To Date*).
+
+> **Masukkan grafik Tuition Fees Up To Date dari Google Colab di bawah ini.**
+
+<p align="center">
+  <img src="images/tuition_fee.png" width="600">
+</p>
+
+<p align="center">
+<b>Gambar 4.4 Status Pembayaran Biaya Kuliah</b>
+</p>
+
+Grafik menunjukkan bahwa sebagian besar mahasiswa memiliki status pembayaran biaya kuliah yang telah diperbarui. Variabel ini diperkirakan menjadi salah satu faktor yang dapat memengaruhi keberhasilan mahasiswa dalam menyelesaikan studi.
+
+## 4.5 Korelasi Antar Variabel
+
+Analisis korelasi dilakukan untuk mengetahui hubungan antar variabel yang digunakan dalam penelitian. Korelasi divisualisasikan menggunakan *heatmap* sehingga hubungan antar fitur dapat diamati dengan lebih mudah.
+
+> **Masukkan heatmap hasil Google Colab di bawah ini.**
+
+<p align="center">
+  <img src="images/heatmap.png" width="700">
+</p>
+
+<p align="center">
+<b>Gambar 4.5 Heatmap Korelasi Antar Variabel</b>
+</p>
+
+Berdasarkan hasil visualisasi, sebagian besar variabel tidak memiliki korelasi yang sangat tinggi satu sama lain. Hal ini menunjukkan bahwa setiap variabel memberikan informasi yang berbeda dan berpotensi memberikan kontribusi terhadap proses klasifikasi. Beberapa variabel menunjukkan hubungan yang lebih kuat dibandingkan variabel lainnya, namun tidak ditemukan korelasi yang sangat tinggi sehingga risiko terjadinya multikolinearitas relatif kecil.
+
+# 5. Data Preparation
+
+Tahap *Data Preparation* dilakukan untuk mempersiapkan dataset sebelum digunakan pada proses pemodelan. Proses ini bertujuan agar data memiliki format yang sesuai dengan kebutuhan algoritma *Machine Learning* sehingga model dapat dilatih dengan lebih optimal. Tahapan yang dilakukan pada penelitian ini meliputi transformasi target, seleksi fitur, pemisahan data, dan proses *encoding*.
+
+---
+
+## 5.1 Transformasi Target
+
+Dataset asli memiliki tiga kelas target, yaitu **Graduate**, **Dropout**, dan **Enrolled**. Agar penelitian berfokus pada klasifikasi biner, dilakukan transformasi target dengan menggabungkan kelas **Dropout** dan **Enrolled** menjadi **Not Graduate**.
+
+Transformasi tersebut menghasilkan dua kelas akhir, yaitu:
+
+| Target Awal | Target Baru |
+|-------------|-------------|
+| Graduate | Graduate |
+| Dropout | Not Graduate |
+| Enrolled | Not Graduate |
+
+Transformasi ini dilakukan agar model lebih mudah membedakan mahasiswa yang berhasil menyelesaikan studi dengan mahasiswa yang belum atau tidak berhasil menyelesaikan studi.
+
+---
+
+## 5.2 Seleksi Fitur
+
+Pada penelitian ini dilakukan seleksi fitur dengan menghapus seluruh atribut yang berkaitan dengan nilai Semester 1 dan Semester 2. Penghapusan dilakukan agar model tidak bergantung pada hasil akademik selama perkuliahan, tetapi lebih berfokus pada karakteristik mahasiswa sebelum memperoleh nilai pada semester tersebut.
+
+Fitur yang digunakan terdiri atas atribut demografis, sosial, ekonomi, serta beberapa informasi akademik awal yang dianggap relevan terhadap proses prediksi kelulusan mahasiswa.
+
+---
+
+## 5.3 Label Encoding
+
+Target klasifikasi yang telah dibentuk kemudian dikonversi ke dalam bentuk numerik menggunakan **LabelEncoder** dari pustaka Scikit-learn.
+
+Proses ini dilakukan karena algoritma Decision Tree dan Random Forest memerlukan target dalam bentuk numerik sebelum proses pelatihan model dilakukan.
+
+---
+
+## 5.4 Pemisahan Data
+
+Setelah proses transformasi selesai, dataset dibagi menjadi data latih (*training data*) dan data uji (*testing data*) menggunakan fungsi `train_test_split`.
+
+Pembagian data dilakukan dengan rasio:
+
+- **80%** data latih (*training data*)
+- **20%** data uji (*testing data*)
+
+Data latih digunakan untuk membangun model, sedangkan data uji digunakan untuk mengevaluasi performa model terhadap data yang belum pernah dipelajari sebelumnya.
+
+---
+
+## 5.5 Hasil Data Preparation
+
+Setelah seluruh tahapan *Data Preparation* selesai dilakukan, dataset siap digunakan pada proses pembangunan model menggunakan algoritma Decision Tree dan Random Forest. Data yang dihasilkan telah memiliki target dalam bentuk klasifikasi biner, fitur yang relevan, serta format numerik yang sesuai dengan kebutuhan algoritma *Machine Learning*.
+
