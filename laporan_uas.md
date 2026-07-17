@@ -443,7 +443,7 @@ Hasil evaluasi model Decision Tree menunjukkan bahwa model mampu melakukan klasi
 > **Masukkan gambar Confusion Matrix Decision Tree di bawah ini.**
 
 <p align="center">
-  <img src="images/confusion_matrix_dt.png" width="550">
+  <img src="image/matrix_decisionTree.png" width="550">
 </p>
 
 <p align="center">
@@ -470,7 +470,7 @@ Hasil evaluasi menggunakan algoritma Random Forest menunjukkan peningkatan perfo
 > **Masukkan gambar Confusion Matrix Random Forest di bawah ini.**
 
 <p align="center">
-  <img src="images/confusion_matrix_rf.png" width="550">
+  <img src="image/matrix_randomForest.png" width="550">
 </p>
 
 <p align="center">
