@@ -100,7 +100,7 @@ UAS-KecerdasanBuatan/
 ├── Laporan_uas.md
 ├── uas_model.ipynb
 │
-├── images/
+├── image/
 │
 └── data/
     ├── dataset/
