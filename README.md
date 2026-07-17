@@ -95,13 +95,10 @@ Hasil penelitian menunjukkan bahwa algoritma **Random Forest** memberikan perfor
 
 ```text
 UAS-KecerdasanBuatan/
-│
 ├── README.md
 ├── Laporan_uas.md
 ├── uas_model.ipynb
-│
 ├── image/
-│
 └── data/
     ├── dataset/
     └── jurnal/
