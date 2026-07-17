@@ -237,7 +237,7 @@ Visualisasi distribusi target dilakukan untuk mengetahui proporsi jumlah data pa
 > **Masukkan gambar hasil visualisasi distribusi target dari Google Colab di bawah ini.**
 
 <p align="center">
-  <img src="images/distribusi_target.png" width="600">
+  <img src="image/distribusi_target.png" width="600">
 </p>
 
 <p align="center">
@@ -253,7 +253,7 @@ Visualisasi usia dilakukan untuk mengetahui sebaran usia mahasiswa pada saat mel
 > **Masukkan grafik distribusi usia dari Google Colab di bawah ini.**
 
 <p align="center">
-  <img src="images/distribusi_usia.png" width="600">
+  <img src="image/distribusi_usia.png" width="600">
 </p>
 
 <p align="center">
@@ -269,7 +269,7 @@ Visualisasi ini bertujuan untuk mengetahui proporsi mahasiswa yang menerima beas
 > **Masukkan grafik Scholarship Holder dari Google Colab di bawah ini.**
 
 <p align="center">
-  <img src="images/scholarship.png" width="600">
+  <img src="image/status_beasiswa.png" width="600">
 </p>
 
 <p align="center">
@@ -285,7 +285,7 @@ Visualisasi dilakukan untuk mengetahui distribusi mahasiswa berdasarkan status p
 > **Masukkan grafik Tuition Fees Up To Date dari Google Colab di bawah ini.**
 
 <p align="center">
-  <img src="images/tuition_fee.png" width="600">
+  <img src="image/status_pembayaran.png" width="600">
 </p>
 
 <p align="center">
@@ -301,7 +301,7 @@ Analisis korelasi dilakukan untuk mengetahui hubungan antar variabel yang diguna
 > **Masukkan heatmap hasil Google Colab di bawah ini.**
 
 <p align="center">
-  <img src="images/heatmap.png" width="700">
+  <img src="image/heatmap.png" width="700">
 </p>
 
 <p align="center">
